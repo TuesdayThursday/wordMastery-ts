@@ -1,0 +1,42 @@
+.wordWrapper{
+    position: relative;
+}
+
+
+.WordMenu {
+    display:block;
+    position:absolute;
+    width: 120px;
+    height: 160px;
+    background-color: white;
+    border:1px solid #0066FF;
+    z-index:2;
+    border-radius:7px;
+
+
+
+    left:10px;
+    top: 55px;
+
+    opacity: 95%;
+
+}
+
+.WordMenu ul {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin:0;
+    padding:0;
+    list-style:none;
+
+    font-size: 20px;
+}
+
+.WordMenu ul li{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor:pointer;
+}
