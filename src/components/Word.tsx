@@ -28,9 +28,6 @@ function Word(prop: {id:number, word: string}){
                 
                 </div>
                 {
-                    //console.log(isGlobalOpened)
-                }
-                {
                     MenuContexts?.menuOpen == prop.id ? 
                         <WordMenu word={prop.word} />
                         :
