@@ -5,12 +5,11 @@ import './Word.css';
 
 
 
-function Word(prop: {id:number, word: string}){
+function Word(prop: {id:number, word: string}) {
     const MenuContexts = useContext(menuContext)
     
-    function wordMenuOpener(e:any){
-        let selectedWord = e.target.innerHTML;
-        
+    function wordMenuOpener(event:React.MouseEvent<HTMLDivElement>):void{
+        let selectedWord = (event.target as HTMLElement)?.innerHTML;
         
         if(MenuContexts?.menuOpen != prop.id) {
             MenuContexts?.changeWordId(prop.id);
