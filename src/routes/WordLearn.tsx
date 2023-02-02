@@ -52,6 +52,9 @@ function WordLearn() {
                         '해석 보기'
                 }
            </div>
+           <div id="nextSentenceBtn">
+                {'>'}
+           </div>
         </div>
     )
 
