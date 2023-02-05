@@ -5,14 +5,3 @@
     white-space: pre-wrap;
     flex-wrap:wrap;
 }
-
-.word {
-    padding:10px;
-    padding-right:0px;
-}
-
-
-.word:hover{
-    background-color: #ededed;
-    border-radius:5px;
-}

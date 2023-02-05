@@ -1,5 +1,4 @@
-import { sep } from "path";
-import React, { createContext, useContext, useEffect, useState,FC, useCallback } from "react";
+import React, { createContext, useEffect, useState, useCallback } from "react";
 import Word from '../components/Word';
 import SentenceType from "../types/SentenceType";
 import './WordSeparator.css';
@@ -32,7 +31,7 @@ function WordSeparator(props : SentenceType){
         (wordId: number) => SetMenuOpen(wordId), []
     )
 
-    if(props.sentence.length == 0) return (<></>);
+    if(props.sentence.length === 0) return (<></>);
     return (
         <menuContext.Provider value={{changeWordId,menuOpen}}>
             <div className="wordList">   

@@ -22,6 +22,8 @@ function WordLearn() {
                 originalText: data[0].sentence,
                 interpre:data[0].interpretation
             });
+        }).catch((e) => {
+            console.error("Server has got problem. ", e)
         })
         
     },[])
@@ -53,7 +55,7 @@ function WordLearn() {
                 }
            </div>
            <div id="nextSentenceBtn">
-                {'>'}
+                {'Next'}
            </div>
         </div>
     )

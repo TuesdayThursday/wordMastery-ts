@@ -39,6 +39,15 @@
 }
 
 #nextSentenceBtn {
-    
+    user-select:none;
+    width: 250px;
+    height: 80px;
+    float:right;
+    background-color: #0066ff;
+    margin-top: 10px;
+    border-radius: 8px;
+    line-height:80px;
+    color:white;
+    font-size: 30px;
 }
 
