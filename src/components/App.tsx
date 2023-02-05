@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
-
-
-import './App.css';
+import React, { useState, useEffect } from 'react';
 import AppRouter from './Router';
-
+import Description from './Description';
+import { authenticate } from '../unit/Authentication';
+import './App.css';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
+  const [descriptionSite, setDescription] = useState<boolean>(false);
+
+
+  useEffect(()=>{
+    authenticate().then(auth => {
+      setIsAuthenticated(auth);
+    })
+  },[])
 
   return (
     <div className="App">
-      <AppRouter isLoggedIn={isLoggedIn}/>
+      <AppRouter isLoggedIn={isAuthenticated}/>
+
+
+      <div id="descriptionBtn" onClick={()=>setDescription(!descriptionSite)}>
+        ?
+      </div>
+
+      {
+        descriptionSite ? 
+          <Description state={descriptionSite} setState={setDescription} ></Description>
+        :
+        <></>
+      }
     </div>
   );
 }
