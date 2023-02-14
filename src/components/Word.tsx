@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { menuContext } from "../unit/WordSeparator";
+import { menuContext } from "./WordSeparator";
 import WordMenu from './WordMenu';
 import './Word.css';
 

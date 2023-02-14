@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState, useCallback } from "react";
-import Word from '../components/Word';
+import Word from './Word';
 import SentenceType from "../types/SentenceType";
 import './WordSeparator.css';
 
@@ -22,21 +22,22 @@ function WordSeparator(props : SentenceType){
     
 
     useEffect(()=>{
-        let separatedWords = props.sentence.split(' ');
+        let separatedWords = props.sentence?.split(' ');
 
-        setWords(separatedWords.map(x=>x));
+        setWords(separatedWords?.map(x=>x));
     },[props.sentence])
 
     const changeWordId = useCallback(
         (wordId: number) => SetMenuOpen(wordId), []
     )
 
-    if(props.sentence.length === 0) return (<></>);
+
+    if(props.sentence?.length === 0) return (<></>);
     return (
         <menuContext.Provider value={{changeWordId,menuOpen}}>
             <div className="wordList">   
 
-                {words.map((v,i)=>( 
+                {words?.map((v,i)=>( 
                     <Word key={i} id={i} word={v}></Word>
                 ))}
 
