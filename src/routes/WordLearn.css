@@ -23,19 +23,30 @@
     padding:20px;
     line-height:30px;
 
-    user-select:none;
 }
 
 #originalSentence {
+    user-select: none;
 }
 
-#interpretation {
-    cursor:pointer;
-    margin-top: 10px;
-    background-color:#0066FF;
-    color:white;
+.interpretation {
     line-height:40px;
     min-height:150px;
+    margin-top: 10px;
+
+    background-color:#0066FF;
+    color:white;
+    cursor:pointer;
+}
+
+.reveal {
+    line-height:40px;
+    min-height:150px;
+    margin-top: 10px;
+
+    background-color: white;
+    color:black;
+    cursor: default;
 }
 
 #nextSentenceBtn {
@@ -49,5 +60,37 @@
     line-height:80px;
     color:white;
     font-size: 30px;
+
+    cursor:pointer;
 }
 
+#listSelector {
+    display: flex;
+    width: 740px;
+    height: 50px;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+#listSelector div select {
+    width: 200px;
+    height: 50px;
+    border:1px solid #0066FF;
+    border-radius: 6px;
+    margin-right: 5px;
+    font-size: 15px;
+}
+
+#sentenceListSelector {
+
+}
+
+#wordListSelector {
+
+}
+
+#listSelector div select option {
+    font-size:15px;
+    width: 200px;
+    height: 50px;
+}
