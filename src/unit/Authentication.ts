@@ -1,10 +1,11 @@
-import Cookies from 'js-cookie';
+import { API_SERVER } from '../env'
 
-export const getAccessToken = () => Cookies.get('access_token');
-export const getRefreshToken = () => Cookies.get('refresh_token');
+export const getAccessToken = () => localStorage.getItem('access_token');
+
+export const getRefreshToken = () => localStorage.getItem('refresh_token');
 export const isAuthenticated = () => !!getAccessToken()
 const inOneHour = new Date(new Date().getTime() + 60*60*1000);
-export const setAccessToken = (token:string) => Cookies.set('access_token', token, {expires:inOneHour});
+export const setAccessToken = (token:string) => localStorage.setItem('access_token', token);
 
 
 export const authenticate = async () =>{
@@ -19,7 +20,7 @@ export const authenticate = async () =>{
 
 
 export const login = async <T>(id:string,pw:string):Promise<T> => {
-    return fetch('http://115.140.186.199:3000/auth/login/', {
+    return fetch(`${API_SERVER}/auth/login/`, {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
@@ -40,6 +41,32 @@ export const login = async <T>(id:string,pw:string):Promise<T> => {
         return data
     })
     .catch((error:Error) => {
+        throw error
+    })
+}
+
+export const idDuplicationCheck = async (value:string) => {
+    return fetch(`${API_SERVER}/auth/isIdExist/?id=${value}`, {
+        method: 'GET',
+    })
+}
+
+export const register = async (id:string,pw:string,email:string,nick:string) => {
+    return fetch(`${API_SERVER}/auth/register`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+            id:id,
+            password:pw,
+            email: email,
+            nickname:nick,
+
+        })
+    })
+    .catch((error: Error) => {
         throw error
     })
 }
