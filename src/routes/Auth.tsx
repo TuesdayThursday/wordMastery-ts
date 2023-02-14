@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { login, setAccessToken } from "../unit/Authentication";
+import { CLIENT_SERVER } from "../env"
 import './Auth.css';
 
 
@@ -30,7 +32,7 @@ function Auth() {
         login<{token:string}>(id,pw)
         .then(data=>{
             setAccessToken(data.token);
-            window.location.href = 'http://58.127.58.185:3000/';
+            window.location.href = CLIENT_SERVER;
         })
         .catch(error => {
             alert("잘못된 로그인 정보입니다.")
@@ -47,18 +49,14 @@ function Auth() {
                 </div>
             </div>
             <div className="loginFormSection">
-
                 <form className="loginForm" onSubmit={handleSubmit}>
-                        <input type="text" name="id" id="loginID" onChange={handleChange} placeholder="ID를 입력해주세요" />
-                        <input type="password" name="pw" id="loginPW" onChange={handleChange} placeholder="비밀번호를 입력해주세요" />
-                    
+                    <input type="text" name="id" id="loginID" onChange={handleChange} placeholder="ID를 입력해주세요" />
+                    <input type="password" name="pw" id="loginPW" onChange={handleChange} placeholder="비밀번호를 입력해주세요" />
                     <input type="submit" value="로그인"/>
-
                 </form>
                 <div>
-                    <a href="http://115.140.186.199:3000/api" id="registerLink">회원가입</a>
+                    <Link id="registerLink" to="/register">회원가입</Link>
                 </div>
-
             </div>
             <div id="footer"> 혹시 모를 footer군 </div>
         </div>
