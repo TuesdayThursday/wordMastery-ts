@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { listIdContext } from "../routes/WordLearn";
 import { addWord } from "../unit/SentenceManager";
-import { menuContext } from "./WordSeparator";
+import { menuContext } from "../routes/WordLearn";
 import { translator } from "../unit/Translator"
 const dictionaryBaseURL = "https://en.dict.naver.com/#/search?range=word&query=";
 
@@ -9,14 +9,15 @@ function WordMenu(prop:{word:string, className:string}) {
     const listIdContexts = useContext(listIdContext)
     const MenuContexts = useContext(menuContext)
     const [translatedWord, setTranslatedWord] = useState(prop.word);
+    const [wordTrim, setWordTrim] = useState('');
 
     let wordTrimRegExp = new RegExp(/([A-Za-z-])+/gi);
-    let wordTrim = '';
 
     useEffect(()=>{
         if(prop.word) {
             let temp = wordTrimRegExp.exec(prop.word);
-            wordTrim = temp ? temp[0] : '';
+            setWordTrim(temp ? temp[0] : '');
+            setTranslatedWord(temp ? temp[0] : '');
             // translator(wordTrim, 0, 1)
             // .then(res=>res.json())
             // .then(data => {
@@ -40,9 +41,10 @@ function WordMenu(prop:{word:string, className:string}) {
 
     function searchDictionary() {
         MenuContexts?.changeWordId(-1);
-
+        console.log(prop.word, wordTrim);
         if(wordTrim){
             let dictionaryURL = dictionaryBaseURL + wordTrim;
+            
             window.open(dictionaryURL , '_blank')?.focus();
         }
     }

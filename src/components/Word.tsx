@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { menuContext } from "./WordSeparator";
+import { menuContext } from "../routes/WordLearn";
 import WordMenu from './WordMenu';
 import './Word.css';
 
@@ -11,7 +11,6 @@ function Word(prop: {id:number, word: string}) {
 
     function wordMenuOpener(event:React.MouseEvent<HTMLDivElement>):void{
         let selectedWord = (event.target as HTMLElement)?.innerHTML;
-        console.log(selectedWord);
         if(MenuContexts?.menuOpen !== prop.id) {
             MenuContexts?.changeWordId(prop.id);
         }else{

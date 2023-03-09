@@ -5,19 +5,19 @@ import './WordSeparator.css';
 
 
 
-interface globalMenuProps {
-    changeWordId: (wordId: number) => void;
-    menuOpen:number
-}
+// interface globalMenuProps {
+//     changeWordId: (wordId: number) => void;
+//     menuOpen:number
+// }
 
-export const menuContext = createContext<globalMenuProps | undefined>(
-    undefined
-);
+// export const menuContext = createContext<globalMenuProps | undefined>(
+//     undefined
+// );
 
 function WordSeparator(props : SentenceType){
 
     let [words, setWords] = useState<string[]>([]);
-    const [menuOpen, SetMenuOpen] = useState(-1);
+    
 
     
 
@@ -27,23 +27,18 @@ function WordSeparator(props : SentenceType){
         setWords(separatedWords?.map(x=>x));
     },[props.sentence])
 
-    const changeWordId = useCallback(
-        (wordId: number) => SetMenuOpen(wordId), []
-    )
+
 
 
     if(props.sentence?.length === 0) return (<></>);
     return (
-        <menuContext.Provider value={{changeWordId,menuOpen}}>
-            <div className="wordList">   
+        <div className="wordList">   
 
-                {words?.map((v,i)=>( 
-                    <Word key={i} id={i} word={v}></Word>
-                ))}
+            {words?.map((v,i)=>( 
+                <Word key={i} id={i} word={v}></Word>
+            ))}
 
-            </div>
-            
-        </menuContext.Provider>
+        </div>
     )
 }
 
