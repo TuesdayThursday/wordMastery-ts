@@ -1,0 +1,33 @@
+.selectWrapper {
+    position:relative;
+    
+}
+
+
+.customSelect {
+    width: 200px;
+    height: 48px;
+    border:1px solid #0066FF;
+    border-radius: 6px;
+    margin-right: 5px;
+    font-size: 15px;
+    padding-left:8px;
+    cursor:default;
+    outline:none;
+    
+}
+
+.customSelectFocus {
+    outline:none;
+    border-bottom:none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.optionList {
+    position: absolute;
+    top:51px;
+    width: 212px;
+    z-index:111;
+}
+

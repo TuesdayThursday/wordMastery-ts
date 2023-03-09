@@ -1,0 +1,33 @@
+.customOption {
+    width: 202px;
+    height: 48px;
+    border-left:1px solid #0066FF;
+    border-right:1px solid #0066ff;
+    font-size: 15px;
+    padding-left:8px;
+    background-color: white;
+    line-height:48px;
+    cursor:default;
+    text-align:left;
+}
+
+.customOption:first-child {
+    border-top:none;
+}
+
+.customOption:last-child {
+    border-bottom:1px solid #0066ff;
+    border-radius: 6px;
+    border-top-left-radius:0;
+    border-top-right-radius: 0;
+}
+
+.customOption:hover {
+    background-color:#2793ff;
+    color:white;
+}
+
+.selectedOption {
+    background-color: #0066ff;
+    color:white;
+}
