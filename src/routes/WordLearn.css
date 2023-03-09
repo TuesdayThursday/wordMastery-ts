@@ -26,7 +26,7 @@
 }
 
 #originalSentence {
-    user-select: none;
+    /*user-select: none;*/
 }
 
 .interpretation {
@@ -79,6 +79,7 @@
     border-radius: 6px;
     margin-right: 5px;
     font-size: 15px;
+    padding-left:8px;
 }
 
 #sentenceListSelector {
@@ -94,3 +95,22 @@
     width: 200px;
     height: 50px;
 }
+.originalSentenceWrapper{
+    position:relative;
+}
+.copyBtn {
+    position:absolute;
+    bottom: -50px;
+    right:0px;
+    width: 50px;
+    user-select:none;
+    font-size: 20px;
+    border:1px solid #0066FF;
+    border-radius:5px;
+    padding:5px;
+}
+
+.copyBtn:hover {
+    background-color:#0066ff;
+}
+

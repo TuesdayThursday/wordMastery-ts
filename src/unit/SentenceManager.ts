@@ -3,7 +3,7 @@ import { getAccessToken } from "./Authentication"
 
 //return fetch(`${API_SERVER}/sentencelists/${sentenceListId}/sentences/`, {method: 'GET'})
 
-export const getSentence = async (sentenceListId: string, wordListId: string) => {
+export const getCurrentSentence = async (sentenceListId: string, wordListId: string) => {
     const ACCESS_TOKEN = getAccessToken();
     return fetch(`${API_SERVER}/sentence-suggestion/current/?sentenceListId=${sentenceListId}&wordListId=${wordListId}`,{
         method: 'GET',
@@ -42,8 +42,34 @@ export const addWord = async (wordListId: string, wordToAdd:string) => {
     })
 }
 
+export const getUsersWordLists = () => {
+    const ACCESS_TOKEN = getAccessToken();
+    return fetch(`${API_SERVER}/wordlists/`, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + ACCESS_TOKEN
+        }
+    })
+}
+
+export const getUsersFollowSentenceLists = () => {
+    const ACCESS_TOKEN = getAccessToken();
+
+    return fetch(`${API_SERVER}/following-sentencelists/`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + ACCESS_TOKEN
+        }
+    })
+}
+
 export const getDefaultListId = (language:string) => {
-    const defaultSentenceListId = "7SgWVPrWMGHBXTBk4e8pL";
+    //const defaultSentenceListId = "7SgWVPrWMGHBXTBk4e8pL";
+    const defaultSentenceListId = "c7OgtTwshks3xfW-hJW9M";
     const defaultWordListId = "xXNxeJdzkwPi6VzqSgkZP"
 
     return {
