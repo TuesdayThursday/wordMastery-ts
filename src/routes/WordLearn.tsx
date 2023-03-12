@@ -59,7 +59,6 @@ function WordLearn() {
                 console.log(data.message);
 
             }
-            //오류 처리 ---------------
         }).catch((e) => {
             console.error("Server has got problem. ", e)
         })
@@ -78,7 +77,7 @@ function WordLearn() {
             }
             
         })
-
+        
         getUsersFollowSentenceLists()
         .then(res => res.json())
         .then(data => {
@@ -87,11 +86,10 @@ function WordLearn() {
                     setSentenceLists(sentenceLists => [...sentenceLists, {value:v.id, label:v.name}]);
                 })
             }
-            
+             
         })
 
     },[])
-
 
     function revealInterpretation(){
         setRevealStatus(true);
@@ -118,10 +116,19 @@ function WordLearn() {
             setNextId(data.sentenceId);
         })
     }
+    function sentenceListChange(id:string) {
+        setSelectedSentenceList(id);
+
+        nextSentence(selectedSentenceList, selectedWordList)
+        .then(res => res.json())
+        .then(data => {
+            setNextId(data.sentenceId);
+        })
+    }
     function copySentence() {
         navigator.clipboard?.writeText(sentence.originalText);
         if(!navigator.clipboard){
-            alert("https아니여서 작동안됨 ㅠ")
+            alert("https 아니여서안됨")
         }
         //HTTPS 에서만 작동됨.
     }
@@ -156,7 +163,7 @@ function WordLearn() {
             <div id="WordLearn">
                 <div id="listSelector">
                     <div id="sentenceListSelector">
-                        <Select default={{value:selectedSentenceList,label:wordLists.filter(e=>e.value==selectedSentenceList)[0]?.label || ''}} options={[addSentenListBtn,...sentenceLists]} handler={wordListChange}></Select>
+                        <Select default={{value:selectedSentenceList,label:sentenceLists.filter(e=>e.value==selectedSentenceList)[0]?.label || ''}} options={[addSentenListBtn,...sentenceLists]} handler={sentenceListChange}></Select>
                     </div>
                     <div id="wordListSelector">
                         <Select default={{value:selectedWordList,label:wordLists.filter(e=>e.value==selectedWordList)[0]?.label || ''}} options={[addWordListBtn,...wordLists]} handler={wordListChange}></Select>
